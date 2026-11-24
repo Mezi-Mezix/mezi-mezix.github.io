@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<meta name="description" content="6つの質問で、隠してる本性を暴きます。表の顔と裏の顔、あなたはどのタイプ？結果は画像カードでシェアできます。" />
+<meta property="og:title" content="あなたの裏の顔診断｜AI LAB Mezi." />
+<meta property="og:description" content="6つの質問で、隠してる本性を暴きます。表の顔と裏の顔、あなたはどのタイプ？" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mezi-mezix.github.io/ura-no-kao/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="あなたの裏の顔診断｜AI LAB Mezi." />
+<meta name="twitter:description" content="6つの質問で、隠してる本性を暴きます。表の顔と裏の顔、あなたはどのタイプ？" />
+<link rel="icon" href="data:," />
+<title>あなたの裏の顔診断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+color-scheme:dark;
+--bg:#05010F; --bg2:#1B0533;
+--card:#150826; --card2:#1D0B36;
+--ink:#FFF6FD; --ink2:#C9A8E8;
+--line:#3D1B63;
+--pink:#FF4FC3; --pink-deep:#FF2E9E; --pink-soft:rgba(255,79,195,.16); --pink-pale:rgba(255,79,195,.08);
+--lav:#A78BFA; --lav-deep:#8B5CF6; --lav-soft:rgba(167,139,250,.16);
+--cyan:#22E6FF; --cyan-soft:rgba(34,230,255,.13);
+--mint:#2DF5C8; --mint-soft:rgba(45,245,200,.12);
+--peach:#FFB35C; --peach-soft:rgba(255,179,92,.13);
+--gold:#FFD34D; --gold-soft:rgba(255,211,77,.12);
+--shadow:0 0 26px rgba(255,47,158,.30),0 14px 34px rgba(0,0,0,.55);
+--pop-shadow:0 0 14px rgba(139,92,246,.25),0 4px 0 rgba(0,0,0,.45);
+--btn-ink:#fff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans",system-ui,sans-serif;
+background:var(--bg); color:var(--ink);
+min-height:100dvh;
+background-image:
+radial-gradient(circle, rgba(167,139,250,.20) 2.2px, transparent 2.7px),
+radial-gradient(circle at 12% 4%, rgba(139,92,246,.38) 0, transparent 48%),
+radial-gradient(circle at 88% 30%, rgba(255,47,158,.22) 0, transparent 44%),
+radial-gradient(circle at 50% 108%, rgba(34,230,255,.20) 0, transparent 52%);
+background-size:26px 26px, 100% 100%, 100% 100%, 100% 100%;
+}
+button{font-family:inherit; min-height:48px; cursor:pointer; -webkit-tap-highlight-color:transparent}
+.wrap{max-width:580px;margin:0 auto;padding:20px 16px 52px;position:relative;z-index:1}
+.deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.deco span{position:absolute;font-size:20px;opacity:.85;filter:drop-shadow(0 0 7px rgba(255,79,195,.9));animation:floaty 5s ease-in-out infinite}
+.deco .d1{top:6%;left:5%}
+.deco .d2{top:14%;right:6%;animation-delay:.8s;font-size:16px;filter:drop-shadow(0 0 7px rgba(255,211,77,.9))}
+.deco .d3{top:58%;left:3.5%;animation-delay:1.6s;font-size:15px;filter:drop-shadow(0 0 7px rgba(167,139,250,.9))}
+.deco .d4{top:74%;right:4.5%;animation-delay:2.2s}
+.deco .d5{top:38%;right:3%;animation-delay:1.1s;font-size:14px;filter:drop-shadow(0 0 7px rgba(34,230,255,.9))}
+.deco .d6{top:88%;left:7%;animation-delay:2.8s;font-size:16px;filter:drop-shadow(0 0 7px rgba(255,211,77,.9))}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-10px) rotate(8deg)}}
+.screen{display:none}
+.screen.active{display:block;animation:pop.35s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.screen.active{animation:none}.deco span{animation:none}.masks,.r-emoji{animation:none!important} *{transition:none!important}}
+
+/* START */
+.masks{
+width:118px;height:118px;margin:28px auto 16px;
+display:grid;place-items:center;font-size:60px;line-height:1;
+background:var(--card);border:3px dashed var(--pink);border-radius:50%;
+box-shadow:0 0 22px rgba(255,47,158,.55),0 0 46px rgba(139,92,246,.35),inset 0 0 18px rgba(255,47,158,.18);position:relative;
+animation:bob 2.6s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+.masks::before{content:"💗";position:absolute;font-size:22px;top:-12px;left:-16px;transform:rotate(-14deg)}
+.masks::after{content:"✨";position:absolute;font-size:20px;bottom:-8px;right:-14px}
+.lab-tag{display:flex;justify-content:center}
+.lab-tag span{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--pink);border:2px solid var(--pink);border-radius:999px;padding:6px 16px;background:var(--pink-pale);box-shadow:0 0 14px rgba(255,47,158,.45);text-shadow:0 0 8px rgba(255,79,195,.8)}
+h1{font-size:37px;line-height:1.35;text-align:center;margin:18px 0 12px;font-weight:800;text-shadow:0 0 18px rgba(139,92,246,.55)}
+h1 .ura{color:var(--pink);text-decoration:underline wavy var(--pink) 3px;text-underline-offset:7px;text-shadow:0 0 12px rgba(255,47,158,.9)}
+.lead{text-align:center;color:var(--ink2);font-size:15px;line-height:1.85;margin:0 auto 20px;max-width:420px;font-weight:700}
+.meta{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.meta span{border:2px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:800;box-shadow:var(--pop-shadow);background:var(--card)}
+.meta span:nth-child(1){border-color:var(--pink);color:var(--pink);box-shadow:0 0 12px rgba(255,47,158,.35)}
+.meta span:nth-child(2){border-color:var(--lav);color:var(--lav);box-shadow:0 0 12px rgba(167,139,250,.35)}
+.meta span:nth-child(3){border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(34,230,255,.35)}
+.start-btn{display:block;width:100%;border:none;border-bottom:6px solid #A30E68;border-radius:999px;background:linear-gradient(92deg,var(--pink-deep) 0%,var(--lav-deep) 58%,#2563EB 130%);color:var(--btn-ink);font-size:19px;font-weight:800;padding:8px 16px;box-shadow:0 0 24px rgba(255,47,158,.5),0 0 44px rgba(139,92,246,.3);text-shadow:0 0 8px rgba(255,255,255,.45);transition:transform .12s ease,border-bottom-width .12s ease}
+.start-btn:active{transform:translateY(3px);border-bottom-width:3px}
+.tease{background:var(--card);border:2px solid var(--lav-deep);border-radius:26px;padding:18px;margin-top:22px;box-shadow:0 0 18px rgba(139,92,246,.35)}
+.tease h2{display:inline-block;font-size:13.5px;margin:0 0 13px;color:var(--pink);letter-spacing:.04em;background:var(--pink-soft);border:1.5px solid var(--pink);border-radius:999px;padding:6px 14px}
+.tease ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.tease li{font-size:14.5px;line-height:1.6;display:flex;gap:10px;align-items:center;border-radius:16px;padding:9px 12px;border:1.5px solid transparent}
+.tease li:nth-child(1){background:var(--pink-pale);border-color:rgba(255,79,195,.4)}
+.tease li:nth-child(2){background:var(--lav-soft);border-color:rgba(167,139,250,.4)}
+.tease li:nth-child(3){background:var(--peach-soft);border-color:rgba(255,179,92,.4)}
+.tease li:nth-child(4){background:var(--cyan-soft);border-color:rgba(34,230,255,.4)}
+.tease li b{flex:none;font-size:19px}
+.note-link{text-align:center;margin-top:22px;font-size:13px;color:var(--ink2);line-height:1.8}
+.note-link a{color:var(--cyan);font-weight:800;display:inline-block;padding:10px 6px;text-shadow:0 0 8px rgba(34,230,255,.6)}
+
+/* QUIZ */
+.q-head{display:flex;align-items:center;justify-content:space-between;margin:8px 0 12px}
+.q-count{font-weight:800;font-size:14px;color:#fff;background:linear-gradient(92deg,var(--pink-deep),var(--lav-deep));border-radius:999px;padding:8px 16px;box-shadow:0 0 16px rgba(255,47,158,.5)}
+.q-count small{color:#FFE9F5;font-weight:800}
+.back-btn{border:2px solid var(--line);background:var(--card);color:var(--ink2);border-radius:999px;padding:4px 15px;font-size:13px;font-weight:800;min-height:40px;box-shadow:var(--pop-shadow)}
+.bar{height:15px;background:var(--card);border:2px solid var(--line);border-radius:999px;overflow:hidden;margin-bottom:24px}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--pink) 0 12px,var(--lav) 12px 24px);border-radius:999px;box-shadow:0 0 12px rgba(255,47,158,.7);transition:width.35s ease}
+.q-emoji{width:92px;height:92px;margin:4px auto 14px;display:grid;place-items:center;font-size:44px;line-height:1;background:var(--pink-pale);border:3px dashed var(--pink);border-radius:50%;box-shadow:0 0 18px rgba(255,47,158,.45)}
+.q-text{font-size:21px;font-weight:800;line-height:1.55;text-align:center;margin:0 0 8px;min-height:66px}
+.q-sub{text-align:center;color:var(--ink2);font-size:13px;font-weight:700;margin:0 0 20px}
+.opts{display:grid;gap:12px}
+.opt{
+position:relative;
+text-align:left;border:2px solid var(--line);background:var(--card);color:var(--ink);
+border-radius:22px;padding:15px 38px 15px 16px;font-size:16px;font-weight:700;line-height:1.55;
+display:flex;gap:12px;align-items:flex-start;width:100%;
+box-shadow:0 3px 0 rgba(0,0,0,.45);
+transition:border-color .15s ease,background .15s ease,transform .1s ease,box-shadow .15s ease;
+}
+.opt .k{flex:none;width:29px;height:29px;border-radius:50%;background:var(--pink-soft);color:var(--pink);border:1.5px solid var(--pink);display:grid;place-items:center;font-size:14px;font-weight:800;margin-top:1px}
+.opts .opt:nth-child(2) .k{background:var(--lav-soft);color:var(--lav);border-color:var(--lav)}
+.opts .opt:nth-child(3) .k{background:var(--cyan-soft);color:var(--cyan);border-color:var(--cyan)}
+.opts .opt:nth-child(4) .k{background:var(--peach-soft);color:var(--peach);border-color:var(--peach)}
+.opt:active{border-color:var(--pink);background:var(--pink-pale);transform:scale(.99)}
+.opt.picked{border-color:var(--pink);background:var(--pink-soft);box-shadow:0 0 16px rgba(255,47,158,.5)}
+.opt.picked::after{content:"💗";position:absolute;right:13px;top:13px;font-size:16px}
+
+/* THINKING */
+.thinking{text-align:center;padding:70px 0}
+.thinking .big{font-size:62px;display:inline-block;filter:drop-shadow(0 0 14px rgba(255,47,158,.8));animation:spinmask 1s ease-in-out infinite alternate}
+@keyframes spinmask{from{transform:rotate(-8deg) scale(1)}to{transform:rotate(8deg) scale(1.1)}}
+.thinking p{font-weight:800;font-size:17px;margin:18px 0 6px}
+.thinking small{color:var(--ink2);font-weight:700}
+.dots i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--pink);margin:14px 3px 0;box-shadow:0 0 8px currentColor;animation:blink 1s infinite}
+.dots i:nth-child(2){background:var(--lav);color:var(--lav);animation-delay:.18s}
+.dots i:nth-child(3){background:var(--cyan);color:var(--cyan);animation-delay:.36s}
+.dots i:first-child{color:var(--pink)}
+@keyframes blink{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+
+/* RESULT */
+.r-lab{width:fit-content;margin:8px auto 0;font-size:12.5px;font-weight:800;letter-spacing:.14em;color:var(--gold);background:var(--gold-soft);border:2px dashed var(--gold);border-radius:999px;padding:6px 18px;box-shadow:0 0 14px rgba(255,211,77,.35);text-shadow:0 0 8px rgba(255,211,77,.7)}
+.r-emoji{width:126px;height:126px;margin:18px auto 8px;display:grid;place-items:center;font-size:68px;line-height:1;background:var(--card);border:3px dashed var(--pink);border-radius:50%;box-shadow:0 0 26px rgba(255,47,158,.55),0 0 52px rgba(139,92,246,.35),inset 0 0 20px rgba(255,47,158,.18);position:relative;animation:bob 2.8s ease-in-out infinite}
+.r-emoji::before{content:"💗";position:absolute;font-size:21px;top:-8px;left:-12px;transform:rotate(-14deg)}
+.r-emoji::after{content:"✨";position:absolute;font-size:19px;bottom:-6px;right:-10px}
+.r-type{font-size:27px;font-weight:800;text-align:center;line-height:1.45;margin:0 4px 10px;text-shadow:0 0 16px rgba(255,47,158,.5)}
+.r-catch{text-align:center;color:var(--pink);font-weight:800;font-size:15.5px;line-height:1.7;margin:0 auto 18px;max-width:460px;background:var(--pink-pale);border:2px solid var(--pink);border-radius:20px;padding:13px 17px;box-shadow:0 0 16px rgba(255,47,158,.35)}
+.meter-box{background:var(--card);border:2px solid var(--lav-deep);border-radius:26px;padding:17px 19px;margin-bottom:15px;box-shadow:0 0 16px rgba(139,92,246,.35)}
+.meter-box .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.meter-box .row b{font-size:14.5px}
+.meter-box .row output{font-size:25px;font-weight:800;color:var(--pink);text-shadow:0 0 12px rgba(255,47,158,.8)}
+.meter{height:16px;background:rgba(255,79,195,.10);border:2px solid var(--line);border-radius:999px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--pink) 0 12px,var(--cyan) 12px 24px);border-radius:999px;box-shadow:0 0 14px rgba(255,47,158,.7);transition:width 1s ease.2s}
+.faces{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:15px}
+@media (max-width:400px){.faces{grid-template-columns:1fr}}
+.face{border-radius:24px;padding:16px;border:2px solid var(--line);box-shadow:var(--pop-shadow)}
+.face.omote{background:var(--card);border-color:var(--cyan);box-shadow:0 0 14px rgba(34,230,255,.3)}
+.face.ura{background:var(--pink-soft);border:2.5px dashed var(--pink);box-shadow:0 0 16px rgba(255,47,158,.4)}
+.face h3{display:inline-block;margin:0 0 9px;font-size:13px;letter-spacing:.06em;border-radius:999px;padding:5px 13px}
+.face.omote h3{color:var(--cyan);background:var(--cyan-soft);border:1.5px solid var(--cyan)}
+.face.ura h3{color:var(--pink);background:var(--card);border:1.5px solid var(--pink)}
+.face p{margin:0;font-size:14.5px;line-height:1.7;font-weight:700}
+.desc{background:var(--card);border:2px solid var(--line);border-radius:26px;padding:18px;margin-bottom:15px;box-shadow:var(--pop-shadow)}
+.desc p{margin:0;font-size:15px;line-height:1.9}
+.aruaru{background:var(--card);border:2px solid var(--line);border-radius:26px;padding:18px;margin-bottom:15px;box-shadow:var(--pop-shadow)}
+.aruaru h3{display:inline-block;margin:0 0 13px;font-size:14.5px;background:var(--lav-soft);color:var(--lav);border:1.5px solid var(--lav);border-radius:999px;padding:6px 14px}
+.aruaru ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.aruaru li{font-size:14.5px;line-height:1.65;display:flex;gap:9px;align-items:flex-start}
+.aruaru li span{flex:none;font-size:14px;margin-top:1px}
+.match{background:var(--gold-soft);border:2.5px dashed var(--gold);border-radius:24px;padding:16px 19px;margin-bottom:22px;font-size:14.5px;line-height:1.8;box-shadow:0 0 16px rgba(255,211,77,.3)}
+.match b{color:var(--gold)}
+.r-btns{display:grid;gap:12px}
+.copy-btn{border:none;border-bottom:6px solid #A30E68;border-radius:999px;background:linear-gradient(92deg,var(--pink-deep) 0%,var(--lav-deep) 58%,#2563EB 130%);color:var(--btn-ink);font-size:16.5px;font-weight:800;padding:7px 16px;box-shadow:0 0 24px rgba(255,47,158,.5),0 0 44px rgba(139,92,246,.3);text-shadow:0 0 8px rgba(255,255,255,.45);transition:transform .12s ease,border-bottom-width .12s ease}
+.retry-btn{border:2.5px dashed var(--pink);border-radius:999px;background:var(--card);color:var(--pink);font-size:15.5px;font-weight:800;padding:6px 16px;box-shadow:0 0 14px rgba(255,47,158,.3)}
+.copy-btn:active{transform:translateY(3px);border-bottom-width:3px}
+.retry-btn:active{transform:scale(.98)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--pink-deep);color:#fff;border:2px solid #fff;font-size:14px;font-weight:800;padding:12px 22px;border-radius:999px;box-shadow:0 0 24px rgba(255,47,158,.7);opacity:0;pointer-events:none;transition:.3s;z-index:9;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.fallback{width:100%;margin-top:10px;border:2px solid var(--line);border-radius:16px;padding:10px;font-family:inherit;font-size:13px;background:var(--card);color:var(--ink);display:none}
+
+/* SHARE / CARD / LINK（公開仕様：姉妹診断と同形式） */
+.sec-card{background:var(--card);border:2px solid var(--line);border-radius:26px;padding:18px;margin-bottom:15px;box-shadow:var(--pop-shadow)}
+.sec-card h3{display:inline-block;margin:0 0 12px;font-size:14.5px;background:var(--lav-soft);color:var(--lav);border:1.5px solid var(--lav);border-radius:999px;padding:6px 14px}
+.sec-card .sec-note{margin:0 0 10px;font-size:13px;line-height:1.7;color:var(--ink2);font-weight:700}
+.share-preview{white-space:pre-wrap;word-break:break-word;background:#0A0514;border:2px solid var(--line);border-radius:16px;padding:14px 16px;font-size:14px;line-height:1.85}
+.card-preview{width:100%;display:block;border-radius:16px;border:2px solid var(--line);box-shadow:0 0 18px rgba(139,92,246,.3);background:#0A0514;aspect-ratio:1200/630;-webkit-touch-callout:default;-webkit-user-select:auto;user-select:auto}
+.save-guide{margin:14px 0 0;padding:14px 16px;border-radius:16px;background:#0A0514;border:2px dashed var(--lav-deep)}
+.save-guide-title{margin:0 0 10px;font-size:14.5px;font-weight:800}
+.save-guide-steps{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.save-guide-steps li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.6;font-weight:700}
+.save-guide-steps b{color:var(--gold)}
+.step-num{flex:none;width:24px;height:24px;margin-top:1px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));color:#fff;font-size:13.5px;font-weight:800;box-shadow:0 0 10px rgba(255,47,158,.45)}
+.save-guide-alt{margin:10px 0 0;font-size:12.5px;line-height:1.7;color:var(--ink2);font-weight:700}
+.save-guide-alt b{color:var(--ink)}
+.card-btns{display:grid;gap:10px;margin-top:14px}
+.card-share-btn{border:none;border-bottom:6px solid #A30E68;border-radius:999px;background:linear-gradient(92deg,var(--pink-deep) 0%,var(--lav-deep) 58%,#2563EB 130%);color:var(--btn-ink);font-size:16px;font-weight:800;padding:7px 16px;box-shadow:0 0 24px rgba(255,47,158,.5),0 0 44px rgba(139,92,246,.3);text-shadow:0 0 8px rgba(255,255,255,.45);transition:transform .12s ease,border-bottom-width .12s ease}
+.card-share-btn:active{transform:translateY(3px);border-bottom-width:3px}
+.card-save-btn{border:none;border-bottom:6px solid #9A7410;border-radius:999px;background:linear-gradient(92deg,#F5A623,var(--gold));color:#3A2403;font-size:16px;font-weight:800;padding:7px 16px;box-shadow:0 0 20px rgba(255,211,77,.35);transition:transform .12s ease,border-bottom-width .12s ease}
+.card-save-btn:active{transform:translateY(3px);border-bottom-width:3px}
+.card-done{text-align:center;color:var(--cyan);font-size:14px;font-weight:800;min-height:22px;margin:8px 0 0}
+.share-label{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--ink2);text-align:center;margin:2px 0 0}
+.share-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-share{display:flex;align-items:center;justify-content:center;gap:7px;min-height:50px;padding:10px 12px;border-radius:16px;font-size:15px;font-weight:800;border:2px solid var(--line);color:var(--ink);background:var(--card2);transition:transform .12s ease}
+.btn-share:active{transform:scale(.97)}
+.btn-share .s-ic{font-size:17px;line-height:1;font-weight:800}
+.btn-share-x{background:#000;border-color:#3A3A3A;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,.5)}
+.btn-share-threads{background:#101010;border-color:#444;color:#fff}
+.btn-share-line{background:#06C755;border-color:#06C755;color:#fff;box-shadow:0 4px 16px rgba(6,199,85,.28)}
+.btn-share-native{background:var(--lav-soft);border-color:var(--lav-deep);color:var(--ink)}
+.link-url{display:block;width:100%;padding:12px 14px;margin-bottom:10px;background:#0A0514;border:2px solid var(--line);border-radius:14px;color:var(--cyan);font-size:13px;font-weight:700;line-height:1.6;word-break:break-all;text-decoration:underline;text-underline-offset:3px}
+.link-copy-btn{width:100%;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 16px;font-size:15px;font-weight:800;box-shadow:var(--pop-shadow)}
+.link-done{text-align:center;color:var(--cyan);font-size:14px;font-weight:800;min-height:22px;margin:8px 0 0}
+.save-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(3,0,8,.96);overflow-y:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom))}
+.save-overlay.open{display:block}
+.save-overlay-inner{max-width:560px;margin:0 auto}
+.save-overlay h3{margin:0 0 6px;font-size:19px;font-weight:800;text-align:center}
+.save-overlay .save-steps{margin:0 0 14px;font-size:14.5px;line-height:1.85;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 16px}
+.save-overlay .save-steps b{color:var(--gold)}
+.save-overlay-img{width:100%;display:block;border-radius:14px;border:2px solid var(--lav-deep);box-shadow:0 0 30px rgba(139,92,246,.45);background:#0A0514;-webkit-touch-callout:default;-webkit-user-select:auto;user-select:auto}
+.save-dl-link{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;margin-top:16px;padding:12px 20px;border-radius:999px;text-decoration:none;font-size:16px;font-weight:800;color:#fff;background:linear-gradient(92deg,var(--pink-deep),var(--lav-deep));box-shadow:0 0 24px rgba(255,47,158,.45)}
+.save-close-btn{width:100%;margin-top:10px;border:2px solid var(--line);background:var(--card);color:var(--ink2);border-radius:999px;padding:6px 16px;font-size:15px;font-weight:800}
+footer{text-align:center;color:var(--ink2);font-size:12px;margin-top:28px;line-height:1.8}
+footer a{color:var(--cyan);font-weight:800;display:inline-block;padding:8px 4px;text-shadow:0 0 8px rgba(34,230,255,.6)}
+
+</style>
+</head>
+<body>
+<div class="deco" aria-hidden="true"><span class="d1">💗</span><span class="d2">✨</span><span class="d3">🎀</span><span class="d4">💗</span><span class="d5">⭐</span><span class="d6">✨</span></div>
+<div class="wrap">
+
+<!-- START -->
+<section class="screen active" id="s-start">
+<div class="masks" aria-hidden="true">🎭</div>
+<div class="lab-tag"><span>AI LAB Mezi. 診断シリーズ</span></div>
+<h1>あなたの<span class="ura">裏の顔</span>診断</h1>
+<p class="lead">みんなの前では「いい人」「しっかり者」「クール」…<br>でも本当のあんた、ぜんっぜん違うでしょ？w<br>6つの質問で、隠してる本性を暴きます👀</p>
+<div class="meta"><span>📝 全6問</span><span>⏱ 約1分</span><span>🎯 結果は4タイプ</span></div>
+<button class="start-btn" id="btn-start" type="button">裏の顔を暴いてみる 🔍</button>
+<div class="tease">
+<h2>暴かれる裏の顔は、この4つのどれか…</h2>
+<ul>
+<li><b>👿</b><span>天使の顔した、あのタイプ</span></li>
+<li><b>🍼</b><span>しっかり者の仮面の下にいる、あのタイプ</span></li>
+<li><b>🔥</b><span>クールぶってるけど中身は、あのタイプ</span></li>
+<li><b>🗡️</b><span>癒し系に見えて実は、あのタイプ</span></li>
+</ul>
+</div>
+<p class="note-link">※ ネタ診断です。当たってても怒らないでねw<br><a href="https://note.com/mezi_creator" target="_blank" rel="noopener">他の診断・読みものは note｜メジ｡ へ →</a></p>
+</section>
+
+<!-- QUIZ -->
+<section class="screen" id="s-quiz">
+<div class="q-head">
+<span class="q-count">Q<span id="q-num">1</span> <small>/ 6</small></span>
+<button class="back-btn" id="btn-back" type="button">← もどる</button>
+</div>
+<div class="bar"><i id="bar-fill"></i></div>
+<div class="q-emoji" id="q-emoji" aria-hidden="true">🎭</div>
+<p class="q-text" id="q-text"></p>
+<p class="q-sub">深く考えず、直感で選んでね（そっちが本性w）</p>
+<div class="opts" id="opts"></div>
+</section>
+
+<!-- THINKING -->
+<section class="screen" id="s-think">
+<div class="thinking">
+<div class="big" aria-hidden="true">🎭</div>
+<p>裏の顔を暴いています…</p>
+<small>あなたの回答パターンを解析中</small>
+<div class="dots"><i></i><i></i><i></i></div>
+</div>
+</section>
+
+<!-- RESULT -->
+<section class="screen" id="s-result">
+<p class="r-lab">— 診断結果 —</p>
+<div class="r-emoji" id="r-emoji" aria-hidden="true"></div>
+<h2 class="r-type" id="r-type"></h2>
+<p class="r-catch" id="r-catch"></p>
+
+<div class="meter-box">
+<div class="row"><b>🤫 裏の顔レベル</b><output id="r-level">0%</output></div>
+<div class="meter"><i id="r-meter"></i></div>
+</div>
+
+<div class="faces">
+<div class="face omote"><h3>☀️ 表の顔</h3><p id="r-omote"></p></div>
+<div class="face ura"><h3>🌙 裏の顔</h3><p id="r-ura"></p></div>
+</div>
+
+<div class="desc"><p id="r-desc"></p></div>
+
+<div class="aruaru">
+<h3>📝 あなたの「あるある」</h3>
+<ul id="r-aruaru"></ul>
+</div>
+
+<div class="match" id="r-match"></div>
+
+<div class="sec-card">
+<h3>📝 シェア文（短縮版）</h3>
+<p class="sec-note">この文が、そのままコピー＆シェア文に入ります（診断のリンク入り）。</p>
+<div class="share-preview" id="share-preview"></div>
+</div>
+
+<div class="sec-card">
+<h3>🖼️ 結果カード画像</h3>
+<img class="card-preview" id="card-preview" alt="あなたの裏の顔診断の結果カード画像（タイプ名・キャッチコピー・裏の顔レベル入り）" />
+<div class="save-guide">
+<p class="save-guide-title">📱 画像の保存のしかた（iPhoneは2ステップ）</p>
+<ol class="save-guide-steps">
+<li><span class="step-num">1</span><span>下の<b>「画像を保存する」</b>ボタンを押す</span></li>
+<li><span class="step-num">2</span><span>出てきた画面の下の方にある<b>「画像を保存」</b>を選ぶ → 写真アプリに入ります✨</span></li>
+</ol>
+<p class="save-guide-alt">※「画像を保存」が出ない・選べなかった時は、上のカード画像を<b>長押し →「写真に追加」</b>でも保存できます。</p>
+</div>
+<div class="card-btns">
+<button class="card-share-btn" id="btn-card-share" type="button">画像カードでシェアする 🖼️</button>
+<button class="card-save-btn" id="btn-card-save" type="button">画像を保存する ⬇️</button>
+</div>
+<p class="card-done" id="card-done"></p>
+<p class="sec-note" style="margin:10px 0 0;">※X・Threadsは投稿画面に画像を直接渡せないため、「画像カードでシェア」から共有シートで画像つき投稿するのがおすすめです。保存した画像を投稿に添付してもOK。</p>
+</div>
+
+<div class="r-btns">
+<p class="share-label">＼ 結果をシェアする ／</p>
+<div class="share-grid">
+<button class="btn-share btn-share-x" id="btn-share-x" type="button"><span class="s-ic">𝕏</span> Xでポスト</button>
+<button class="btn-share btn-share-threads" id="btn-share-threads" type="button"><span class="s-ic">🧵</span> Threads</button>
+<button class="btn-share btn-share-line" id="btn-share-line" type="button"><span class="s-ic">💬</span> LINEで送る</button>
+<button class="btn-share btn-share-native" id="btn-share-native" type="button"><span class="s-ic">↗</span> その他でシェア</button>
+</div>
+<button class="copy-btn" id="btn-copy" type="button">📋 結果をコピーして自慢する</button>
+<button class="retry-btn" id="btn-retry" type="button">🔁 もう一度診断する</button>
+</div>
+<textarea class="fallback" id="copy-fallback" rows="6" readonly></textarea>
+
+<div class="sec-card" style="margin-top:15px;">
+<h3>🔗 この診断のリンク</h3>
+<p class="sec-note">シェア文にはこのリンクが自動で入ります。リンクだけコピーして、投稿やメッセージに貼ることもできます。</p>
+<a class="link-url" id="page-link" href="https://mezi-mezix.github.io/ura-no-kao/" target="_blank" rel="noopener noreferrer">https://mezi-mezix.github.io/ura-no-kao/</a>
+<button class="link-copy-btn" id="btn-copy-link" type="button">リンクをコピーする 🔗</button>
+<p class="link-done" id="link-done"></p>
+</div>
+
+<footer>結果をSNSに貼って、友達の裏の顔も暴いてみてね👀<br><a href="https://note.com/mezi_creator" target="_blank" rel="noopener">note｜メジ｡（AI LAB Mezi.）→</a></footer>
+</section>
+
+</div>
+
+<!-- 画像保存オーバーレイ：長押しで写真アプリに保存する用 -->
+<div class="save-overlay" id="save-overlay" role="dialog" aria-modal="true" aria-label="結果カード画像の保存">
+<div class="save-overlay-inner">
+<h3>📸 カード画像の保存</h3>
+<p class="save-steps">① 下の画像を<b>長押し</b>する<br />② メニューの<b>「写真に追加」</b>（または「画像を保存」）を選ぶ<br />→ 写真アプリに保存されます✨</p>
+<img class="save-overlay-img" id="save-overlay-img" alt="あなたの裏の顔診断の結果カード画像（長押しで保存できます）" />
+<a class="save-dl-link" id="save-dl-link" href="#" download="ura-no-kao-result-card.png">⬇️ ダウンロードで保存する（PC・Android向け）</a>
+<button class="save-close-btn" id="btn-save-close" type="button">とじる</button>
+</div>
+</div>
+
+<div class="toast" id="toast">コピーしたよ！SNSに貼ってね✨</div>
+
+<script>
+var QUESTIONS = [
+{ emoji:"🛋️", text:"休みの日、予定がぜんぶキャンセルになった！本音は？",
+opts:[
+{t:"ラッキー！！今日は誰にも会わずゴロゴロする日", type:"sweet"},
+{t:"え、暇じゃん…誰か誘おうかな（そわそわ）", type:"devil"},
+{t:"一人で出かけて、ついでに色々チェックしに行く", type:"poison"},
+{t:"チャンス！溜めてた推し活・趣味を一気にやる", type:"hot"}
+]},
+{ emoji:"💬", text:"グループLINEで自分の発言が既読スルーされた。心の中は？",
+opts:[
+{t:"（なんか変なこと言った？）って何回も見返す", type:"sweet"},
+{t:"気にしないフリして、普通にめっちゃ気にしてる", type:"poison"},
+{t:"「おーいw」って追いLINEで笑いに変える", type:"devil"},
+{t:"まあいっか！別の話題で盛り上がりに行く", type:"hot"}
+]},
+{ emoji:"👏", text:"「すごいね！」って褒められた時、本当の反応は？",
+opts:[
+{t:"照れながらも内心ガッツポーズ、何回も思い出す", type:"hot"},
+{t:"「そんなことないよ〜」と言いつつ、もう嬉しい", type:"sweet"},
+{t:"ありがとう！の顔で、次はもっと褒めさせる算段", type:"devil"},
+{t:"嬉しいけど（…何か裏ある？）と一瞬だけ疑う", type:"poison"}
+]},
+{ emoji:"🛍️", text:"ずっと迷ってた高い買い物。最後に背中を押すのは？",
+opts:[
+{t:"「限定」「残りわずか」の文字に弱い、勢いでポチる", type:"devil"},
+{t:"レビューと口コミを読み漁って、納得してから買う", type:"poison"},
+{t:"好きな人の「買っちゃえw」の一言で即決", type:"sweet"},
+{t:"「これで頑張れる！」と自分への投資だと思い込む", type:"hot"}
+]},
+{ emoji:"💖", text:"大好きなもの（推し・趣味）の話になると、あなたは…",
+opts:[
+{t:"普段クールなのに急に早口になる、止まらない", type:"hot"},
+{t:"語らない。胸の中で静かに愛でるのが好き", type:"poison"},
+{t:"周りを巻き込んで布教する、仲間を増やしたい", type:"devil"},
+{t:"好きな人にだけ、嬉しそうにペラペラ話す", type:"sweet"}
+]},
+{ emoji:"🌙", text:"一日が終わって一人になった瞬間、正直いちばん近いのは？",
+opts:[
+{t:"電池切れ。誰か甘やかしてほしいモード突入", type:"sweet"},
+{t:"今日の人間関係を頭の中で一人反省会＆分析会", type:"poison"},
+{t:"まだ終わらん！夜こそ本番、好きなことで燃える", type:"hot"},
+{t:"「明日はあの人をこう誘おう」と楽しい作戦会議", type:"devil"}
+]}
+];
+
+var RESULTS = {
+devil:{ emoji:"👿", name:"天使の皮をかぶった「小悪魔」タイプ",
+catch:"表はニコニコいい人。裏では「まんまと引っかかったな😏」ってニヤリしてる策士。",
+short:"表はニコニコいい人、裏では笑顔で欲しいものを手に入れる、駆け引き上手な小悪魔。",
+omote:"誰にでも優しくて、場を和ませるムードメーカー",
+ura:"ちゃっかり自分のペースに持っていく、駆け引き上手な小悪魔",
+desc:"第一印象は「いい人」「かわいい人」。でも実は、人をよく見てて「こう言えば動く」ってツボを本能で分かってるタイプ。甘え上手で頼み上手、欲しいものはだいたい笑顔で手に入れてきたはずw 悪気がないのが最強の武器で、周りも「まあいっか」って許しちゃう。…本人は無自覚なフリして、だいたい自覚あるでしょ？👀",
+aruaru:["お願いするときの声のトーンが、通常時とちょっと違う","「どっちでもいいよ」と言いつつ、誘導してることがある","褒められたら素直に喜ぶけど、内心ちゃんと計算済み"],
+match:"相性◎の裏の顔：🔥 熱血タイプ。一緒にいると小悪魔の作戦に熱血が乗っかって、最強コンビになるよ。"},
+sweet:{ emoji:"🍼", name:"しっかり者の仮面の下は「限界甘えん坊」タイプ",
+catch:"外では頼れるしっかり者。家に帰った瞬間、電池0の赤ちゃんに戻ります。",
+short:"外では頼れるしっかり者、家では電池0で甘えたい、限界まで我慢する甘えん坊。",
+omote:"頼りがいがあって、周りから「しっかりしてるね」と言われる人",
+ura:"本当はかまってほしいし甘えたい、限界まで我慢する甘えん坊",
+desc:"仕事も人間関係もそつなくこなすから、周りはつい頼ってくる。でも本当は「頑張ってるね」って頭なでなでしてほしいし、好きな人の前では弱音も愚痴も全部こぼしたい。甘え下手だからこそ、安心できる人の前で見せるオフの顔は破壊力抜群。たまには「もう無理〜」って言っちゃう方が、周りも嬉しいやつだよ。",
+aruaru:["「大丈夫」が口癖。でも全然大丈夫じゃない日がある","一人の夜に急に寂しくなって、誰かに連絡したくなる","体調悪い時だけ、素直に甘えられる（そしてちょっと嬉しい）"],
+match:"相性◎の裏の顔：🗡️ 策士タイプ。あなたの我慢を黙って見抜いて、先回りして助けてくれるよ。"},
+hot:{ emoji:"🔥", name:"クールの仮面の下は「超・熱血オタク」タイプ",
+catch:"普段はポーカーフェイス。でも好きなことの話になった瞬間、温度が別人。",
+short:"普段はクールなポーカーフェイス、でも好きなことになると温度が別人になる熱血オタク。",
+omote:"落ち着いてて冷静、あまり感情が顔に出ないクールな人",
+ura:"推しと「好き」のためなら全力疾走する、熱すぎるオタク魂の持ち主",
+desc:"普段は「ふーん」とか「まあね」で済ませがち。でもスイッチが入ると早口・情報量多め・目がキラキラ。その落差に周りはびっくりするけど、実はそれがあなたの最大の魅力。興味ないことには省エネな分、好きなことへの集中力と行動力は本物。温度差で周りを風邪ひかせながら、これからも全力で推していこうな🔥",
+aruaru:["推しの話になると、急に語彙と速度が3倍になる","興味ない話題は「へ〜」で終わる、反応の落差がすごい","好きなことのためなら、お金も時間も惜しくない"],
+match:"相性◎の裏の顔：👿 小悪魔タイプ。あなたの熱量を「面白い！」って乗せてくれて、布教活動が加速するよ。"},
+poison:{ emoji:"🗡️", name:"癒し系の顔した「毒舌策士」タイプ",
+catch:"ほわほわに見えて、実は全部見えてる。心の声は結構、辛辣ですw",
+short:"ほわほわ癒し系に見えて、実は人間関係を3手先まで読む、心の声は毒舌な策士。",
+omote:"のんびりしてて優しい、みんなの癒し系",
+ura:"人間関係を3手先まで読む策士で、心の中のツッコミは毒舌",
+desc:"「何も考えてなさそう」と思われがちだけど、実は場の空気も人の本音もだいたい読めてるタイプ。言わないだけ。心の中では「それ絶対嘘やん」「はい出た、面倒な人」って冷静にツッコんでるはずw だからこそ無駄な争いに巻き込まれないし、本当に大事な人のピンチには静かに一番効く手を打つ。優しさと観察眼のハイブリッド、それがあなたの裏の顔。",
+aruaru:["会議や飲み会、話すより「観察」してる時間の方が長い","心の中のツッコミが面白すぎて、たまに笑いが漏れる","「別に怒ってないよ」と言った時ほど、よく見ている"],
+match:"相性◎の裏の顔：🍼 甘えん坊タイプ。策士のあなたは相手の「大丈夫じゃない」を真っ先に見抜ける、最高の理解者になるよ。"}
+};
+
+var idx = 0, answers = [];
+var $ = function(id){ return document.getElementById(id);};
+function show(id){
+var screens = document.querySelectorAll('.screen');
+for (var i=0;i<screens.length;i++) screens[i].classList.remove('active');
+$(id).classList.add('active');
+window.scrollTo({top:0, behavior:'smooth'});
+}
+function renderQ(){
+var q = QUESTIONS[idx];
+$('q-num').textContent = idx+1;
+$('bar-fill').style.width = ((idx)/QUESTIONS.length*100) + '%';
+$('q-emoji').textContent = q.emoji;
+$('q-text').textContent = q.text;
+var box = $('opts'); box.innerHTML = '';
+var keys = ['A','B','C','D'];
+q.opts.forEach(function(o,i){
+var b = document.createElement('button');
+b.type = 'button'; b.className = 'opt';
+b.innerHTML = '<span class="k">'+keys[i]+'</span><span></span>';
+b.querySelector('span:last-child').textContent = o.t;
+b.addEventListener('click', function(){
+b.classList.add('picked');
+answers[idx] = o.type;
+setTimeout(function(){
+idx++;
+if (idx < QUESTIONS.length){ renderQ();}
+else { show('s-think'); setTimeout(showResult, 1400);}
+}, 180);
+});
+box.appendChild(b);
+});
+$('btn-back').style.visibility = idx === 0? 'hidden': 'visible';
+}
+function showResult(){
+var counts = {devil:0, sweet:0, hot:0, poison:0};
+answers.forEach(function(t){ counts[t]++;});
+var winner = 'devil', max = -1;
+['devil','sweet','hot','poison'].forEach(function(k){ if (counts[k] > max){ max = counts[k]; winner = k;}});
+var r = RESULTS[winner];
+var levels = {2:68, 3:78, 4:86, 5:93, 6:99};
+var level = levels[max] || 62;
+$('r-emoji').textContent = r.emoji;
+$('r-type').textContent = r.name;
+$('r-catch').textContent = r.catch;
+$('r-omote').textContent = r.omote;
+$('r-ura').textContent = r.ura;
+$('r-desc').textContent = r.desc;
+$('r-match').innerHTML = '';
+var mb = document.createElement('b'); mb.textContent = '💘 ';
+$('r-match').appendChild(mb);
+$('r-match').appendChild(document.createTextNode(r.match));
+var ul = $('r-aruaru'); ul.innerHTML = '';
+r.aruaru.forEach(function(a){
+var li = document.createElement('li');
+var s = document.createElement('span'); s.textContent = '💗';
+li.appendChild(s); li.appendChild(document.createTextNode(a));
+ul.appendChild(li);
+});
+show('s-result');
+$('r-level').textContent = '0%';
+$('r-meter').style.width = '0';
+var n = 0;
+var timer = setInterval(function(){
+n += 3; if (n >= level){ n = level; clearInterval(timer);}
+$('r-level').textContent = n + '%';
+}, 30);
+setTimeout(function(){ $('r-meter').style.width = level + '%';}, 60);
+window._lastResult = { result: r, level: level };
+window._shareText = buildShareText();
+var pv = $('share-preview'); if (pv){ pv.textContent = window._shareText;}
+$('card-done').textContent = '';
+$('link-done').textContent = '';
+generateCardImage();
+}
+
+/* ============ 公開リンク＆シェア文（短縮版） ============ */
+var PAGE_URL = 'https://mezi-mezix.github.io/ura-no-kao/';
+function buildShareText(){
+if (!window._lastResult){ return '';}
+var r = window._lastResult.result;
+var level = window._lastResult.level;
+return '🎭あなたの裏の顔診断🎭\n' +
+'私の裏の顔は【' + r.name + '】でした！\n' +
+r.short + '\n' +
+'裏の顔レベル：' + level + '%\n' +
+'\n診断はこちら👉\n' + PAGE_URL + '\n' +
+'#裏の顔診断 #AILABMezi';
+}
+function toastMsg(msg){
+var t = $('toast'); t.textContent = msg; t.classList.add('show');
+setTimeout(function(){ t.classList.remove('show');}, 2200);
+}
+function fallbackCopyText(text){
+try {
+var ta = document.createElement('textarea');
+ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+document.body.appendChild(ta); ta.select();
+var res = document.execCommand('copy');
+document.body.removeChild(ta); return res;
+} catch(e){ return false;}
+}
+function openShareWindow(url){ window.open(url, '_blank', 'noopener,noreferrer,width=600,height=560');}
+
+/* ============ 結果カード画像（Canvas生成・1200×630） ============ */
+var cardBlob = null, cardUrl = null;
+function roundRectPath(ctx, x, y, w, h, rad){
+ctx.beginPath();
+ctx.moveTo(x + rad, y);
+ctx.arcTo(x + w, y, x + w, y + h, rad);
+ctx.arcTo(x + w, y + h, x, y + h, rad);
+ctx.arcTo(x, y + h, x, y, rad);
+ctx.arcTo(x, y, x + w, y, rad);
+ctx.closePath();
+}
+function wrapLines(ctx, text, maxW, maxLines){
+var lines = [], cur = '';
+text.split('').forEach(function(ch){
+if (cur && ctx.measureText(cur + ch).width > maxW){ lines.push(cur); cur = ch;}
+else { cur += ch;}
+});
+if (cur){ lines.push(cur);}
+return lines.slice(0, maxLines);
+}
+function generateCardImage(){
+if (!window._lastResult){ return;}
+var r = window._lastResult.result;
+var level = window._lastResult.level;
+var W = 1200, H = 630;
+var cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+var ctx = cv.getContext('2d');
+function draw(){
+ctx.fillStyle = '#05010F'; ctx.fillRect(0, 0, W, H);
+var g1 = ctx.createRadialGradient(1080, 40, 40, 1080, 40, 620);
+g1.addColorStop(0, 'rgba(255,47,158,0.30)'); g1.addColorStop(1, 'rgba(255,47,158,0)');
+ctx.fillStyle = g1; ctx.fillRect(0, 0, W, H);
+var g2 = ctx.createRadialGradient(90, 120, 40, 90, 120, 640);
+g2.addColorStop(0, 'rgba(139,92,246,0.34)'); g2.addColorStop(1, 'rgba(139,92,246,0)');
+ctx.fillStyle = g2; ctx.fillRect(0, 0, W, H);
+var g3 = ctx.createRadialGradient(600, 660, 40, 600, 660, 560);
+g3.addColorStop(0, 'rgba(34,230,255,0.16)'); g3.addColorStop(1, 'rgba(34,230,255,0)');
+ctx.fillStyle = g3; ctx.fillRect(0, 0, W, H);
+ctx.save();
+ctx.shadowColor = '#FF2E9E'; ctx.shadowBlur = 26;
+roundRectPath(ctx, 26, 26, W - 52, H - 52, 30);
+ctx.strokeStyle = '#FF4FC3'; ctx.lineWidth = 3; ctx.stroke();
+ctx.restore();
+ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+var F = "'M PLUS Rounded 1c','Hiragino Maru Gothic ProN',sans-serif";
+ctx.fillStyle = '#FFD34D';
+ctx.font = '800 28px ' + F;
+ctx.fillText('🎭 あなたの裏の顔診断 🎭', W / 2, 66);
+ctx.font = '64px sans-serif';
+ctx.fillText(r.emoji, W / 2, 138);
+var nameSize = 56;
+ctx.fillStyle = '#FFF6FD';
+ctx.font = '800 ' + nameSize + 'px ' + F;
+while (ctx.measureText(r.name).width > 1040 && nameSize > 30){
+nameSize -= 2; ctx.font = '800 ' + nameSize + 'px ' + F;
+}
+ctx.fillText(r.name, W / 2, 222);
+ctx.fillStyle = '#FF4FC3';
+ctx.font = '800 30px ' + F;
+wrapLines(ctx, r.catch, 1020, 2).forEach(function(ln, i){ ctx.fillText(ln, W / 2, 282 + i * 42);});
+ctx.fillStyle = '#C9A8E8';
+ctx.font = '700 24px ' + F;
+wrapLines(ctx, r.short, 1020, 2).forEach(function(ln, i){ ctx.fillText(ln, W / 2, 382 + i * 36);});
+ctx.fillStyle = '#FF4FC3';
+ctx.font = '800 42px ' + F;
+ctx.fillText('🤫 裏の顔レベル ' + level + '%', W / 2, 492);
+ctx.fillStyle = 'rgba(201,168,232,0.85)';
+ctx.font = '700 21px ' + F;
+ctx.fillText('#裏の顔診断　AI LAB Mezi.', W / 2, 582);
+if (cv.toBlob){
+cv.toBlob(function(blob){
+if (!blob){ return;}
+cardBlob = blob;
+if (cardUrl){ URL.revokeObjectURL(cardUrl);}
+cardUrl = URL.createObjectURL(blob);
+$('card-preview').src = cardUrl;
+var ovImg = $('save-overlay-img'); if (ovImg){ ovImg.src = cardUrl;}
+var dl = $('save-dl-link'); if (dl){ dl.href = cardUrl;}
+}, 'image/png');
+}
+}
+if (document.fonts && document.fonts.ready){ document.fonts.ready.then(draw);} else { draw();}
+}
+function getCardFile(){
+if (!cardBlob){ return null;}
+try { return new File([cardBlob], 'ura-no-kao-result-card.png', { type: 'image/png' });} catch(e){ return null;}
+}
+function openSaveOverlay(){
+var ov = $('save-overlay'); if (!ov){ return false;}
+if (cardUrl){ $('save-overlay-img').src = cardUrl; $('save-dl-link').href = cardUrl;}
+ov.classList.add('open'); ov.scrollTop = 0; return true;
+}
+$('btn-start').addEventListener('click', function(){ idx = 0; answers = []; renderQ(); show('s-quiz');});
+$('btn-back').addEventListener('click', function(){ if (idx > 0){ idx--; renderQ();}});
+$('btn-retry').addEventListener('click', function(){ idx = 0; answers = []; $('copy-fallback').style.display='none'; $('save-overlay').classList.remove('open'); show('s-start');});
+$('btn-card-share').addEventListener('click', function(){
+var done = $('card-done');
+var file = getCardFile();
+if (file && navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share){
+navigator.share({ title: 'あなたの裏の顔診断', text: buildShareText(), files: [file] }).then(function(){
+done.textContent = 'シェアしました💕';
+}).catch(function(err){
+if (err && err.name === 'AbortError'){ return;}
+done.textContent = 'シェア画面を開けなかった…「画像を保存」して投稿に添付してね🙏';
+});
+} else if (!cardBlob){
+done.textContent = '画像を準備中…少し待ってからもう一度押してね🙏';
+} else {
+done.textContent = 'この端末では画像つき共有に未対応みたい。「画像を保存」して投稿に添付してね🙏';
+}
+});
+$('btn-card-save').addEventListener('click', function(){
+var done = $('card-done');
+if (!cardBlob || !cardUrl){
+done.textContent = '画像を準備中…少し待ってからもう一度押してね🙏';
+return;
+}
+/* iPhone／iPad：共有シートの「画像を保存」が写真アプリへの確実な保存経路（姉妹診断で実機確認済みの方式） */
+var file = getCardFile();
+if (file && navigator.share && navigator.canShare && navigator.canShare({ files: [file] })){
+done.textContent = '';
+navigator.share({ files: [file], title: 'あなたの裏の顔診断 結果カード' }).then(function(){
+done.textContent = '「画像を保存」を選んでいたら、写真アプリに入っているよ💕 写真アプリで確認してみてね';
+}).catch(function(err){
+if (err && err.name === 'AbortError'){
+done.textContent = 'キャンセルされたみたい🙏 保存するときは、もう一度ボタンを押して、出てきた画面で「画像を保存」を選んでね（手順はボタンの上にも書いてあるよ）';
+return;
+}
+if (openSaveOverlay()){ done.textContent = '画像を長押しして「写真に追加」を選んでね📸';}
+else { done.textContent = '上のカード画像を長押しして「写真に追加」を選んでね📸';}
+});
+return;
+}
+if (openSaveOverlay()){ done.textContent = '画像を長押し、または下のダウンロードボタンで保存してね📸';}
+else { done.textContent = '上のカード画像を長押しして保存してね📸';}
+});
+$('btn-save-close').addEventListener('click', function(){ $('save-overlay').classList.remove('open');});
+$('btn-share-x').addEventListener('click', function(){
+var text = buildShareText(); if (!text){ return;}
+openShareWindow('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text));
+});
+$('btn-share-threads').addEventListener('click', function(){
+var text = buildShareText(); if (!text){ return;}
+openShareWindow('https://www.threads.net/intent/post?text=' + encodeURIComponent(text));
+});
+$('btn-share-line').addEventListener('click', function(){
+var text = buildShareText(); if (!text){ return;}
+openShareWindow('https://line.me/R/msg/text/?' + encodeURIComponent(text));
+});
+$('btn-share-native').addEventListener('click', function(){
+var text = buildShareText(); if (!text){ return;}
+if (navigator.share){
+navigator.share({ title: 'あなたの裏の顔診断', text: text }).then(function(){
+toastMsg('シェアしました💕');
+}).catch(function(err){
+if (err && err.name === 'AbortError'){ return;}
+toastMsg('シェア画面を開けなかった…コピーして使ってね🙏');
+});
+} else if (navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(text).then(function(){ toastMsg('コピーしました！好きなSNSに貼ってね💕');}).catch(function(){ toastMsg(fallbackCopyText(text) ? 'コピーしました！好きなSNSに貼ってね💕' : 'コピーできなかった…ごめんね🙏');});
+} else {
+toastMsg(fallbackCopyText(text) ? 'コピーしました！好きなSNSに貼ってね💕' : 'コピーできなかった…ごめんね🙏');
+}
+});
+$('btn-copy-link').addEventListener('click', function(){
+var done = $('link-done');
+function ok(){ done.textContent = 'リンクをコピーしました！貼り付けて使ってね💕';}
+function ng(){ done.textContent = 'コピーできなかった…上のリンクを長押ししてコピーしてね🙏';}
+if (navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(PAGE_URL).then(ok, function(){ fallbackCopyText(PAGE_URL) ? ok() : ng();});
+} else { fallbackCopyText(PAGE_URL) ? ok() : ng();}
+});
+$('btn-copy').addEventListener('click', function(){
+var text = window._shareText || '';
+function done(){
+var t = $('toast'); t.textContent = 'コピーしたよ！SNSに貼ってね✨'; t.classList.add('show');
+setTimeout(function(){ t.classList.remove('show');}, 2200);
+}
+if (navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(text).then(done).catch(function(){ fallback();});
+} else { fallback();}
+function fallback(){
+var f = $('copy-fallback'); f.value = text; f.style.display = 'block';
+f.select(); try { document.execCommand('copy');} catch(e){}
+done();
+}
+});
+</script>
+</body>
+</html>
