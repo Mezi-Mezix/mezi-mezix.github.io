@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ネオンアイコン風プロフィール画像プロンプト｜AI LAB Mezi.</title>
+<meta name="description" content="コピペで使える画像生成プロンプトの配布ページ（サンプル）です。">
+<style>
+:root{
+--bg:#080812; --card:#171326; --pink:#FF2BD6; --cyan:#00F5FF; --purple:#A855F7;
+--text:#F4F2FF; --muted:#B9B3D9;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+background:var(--bg); color:var(--text);
+font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+line-height:1.7; padding:24px 16px 48px;
+}
+.wrap{max-width:680px; margin:0 auto;}
+.brand{font-size:13px; letter-spacing:.18em; color:var(--cyan); text-align:center; margin-bottom:8px;}
+h1{font-size:24px; text-align:center; line-height:1.4; margin-bottom:6px;}
+h1.grad{background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.lead{text-align:center; color:var(--muted); font-size:14px; margin-bottom:24px;}
+.card{
+background:var(--card); border:1px solid rgba(168,85,247,.45); border-radius:16px;
+padding:20px 18px; margin-bottom:20px; box-shadow:0 0 24px rgba(255,43,214,.12);
+}
+.card h2{font-size:16px; margin-bottom:10px; color:var(--cyan);}
+.card p,.card li{font-size:14px; color:var(--text);}
+.card ol{padding-left:20px;}
+.prompt-box{
+background:#0D0B1A; border:1px dashed rgba(0,245,255,.5); border-radius:12px;
+padding:16px; font-size:14px; white-space:pre-wrap; word-break:break-word;
+font-family:"Hiragino Sans","Noto Sans JP",sans-serif; margin-bottom:14px;
+}
+.copy-btn{
+display:block; width:100%; padding:14px; border:none; border-radius:999px;
+background:linear-gradient(90deg,var(--pink),var(--purple)); color:#fff;
+font-size:16px; font-weight:bold; cursor:pointer; letter-spacing:.05em;
+}
+.copy-btn:active{opacity:.8;}
+.copied-msg{text-align:center; color:var(--cyan); font-size:14px; height:22px; margin-top:8px;}
+.note{font-size:12px; color:var(--muted);}
+footer{text-align:center; color:var(--muted); font-size:12px; margin-top:28px;}
+footer a{color:var(--cyan);}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="brand">AI LAB Mezi.</div>
+<h1><span class="grad">ネオンアイコン風</span><br>プロフィール画像プロンプト</h1>
+<p class="lead">下のプロンプトをコピーして、画像生成AIに貼るだけで使えます。</p>
+
+<div class="card">
+<h2>使い方</h2>
+<ol>
+<li>下の「コピーする」ボタンを押す</li>
+<li>画像生成AI（ChatGPT・Geminiなど）の入力欄に貼る</li>
+<li>の中を自分のイメージに書き換えると、オリジナルになります</li>
+</ol>
+</div>
+
+<div class="card">
+<h2>プロンプト本文</h2>
+<div class="prompt-box" id="promptText">かわいい女の子のプロフィールアイコンを描いてください。
+
+・黒い背景に、ネオンピンクと水色の光で縁取られたイラスト
+・の髪型で、大きめのリボンをつけている
+・表情はで、ほっぺに小さな星のシール
+・キラキラした粒子と、小さなハートが周りに浮かんでいる
+・正方形（1:1）、SNSのアイコンに使える構図、顔は大きめに中央へ
+・文字やロゴは入れないでください</div>
+<button class="copy-btn" id="copyBtn">📋 プロンプトをコピーする</button>
+<div class="copied-msg" id="copiedMsg"></div>
+<p class="note">※ これは配布形式のサンプルページです。本文は自由に書き換えて使ってください。</p>
+</div>
+
+<footer>
+AI LAB Mezi.｜<a href="https://note.com/mezi_creator">note</a>
+</footer>
+</div>
+<script>
+var btn = document.getElementById('copyBtn');
+var msg = document.getElementById('copiedMsg');
+btn.addEventListener('click', function(){
+var text = document.getElementById('promptText').innerText;
+function done(){ msg.textContent = 'コピーしました ✅'; setTimeout(function(){ msg.textContent='';}, 2500);}
+if (navigator.clipboard && navigator.clipboard.writeText) {
+navigator.clipboard.writeText(text).then(done).catch(function(){ fallback();});
+} else { fallback();}
+function fallback(){
+var ta = document.createElement('textarea');
+ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+document.body.appendChild(ta); ta.select();
+try { document.execCommand('copy'); done();} catch(e) { msg.textContent = '長押しでコピーしてください';}
+document.body.removeChild(ta);
+}
+});
+</script>
+</body>
+</html>
